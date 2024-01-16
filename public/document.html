@@ -1,0 +1,50 @@
+<!-- public/document.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <form id="file-upload-form" action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="aadhar" accept=".pdf">
+    <input type="file" name="pan" accept=".pdf">
+    <input type="file" name="form16" accept=".pdf">
+    <input type="file" name="annualinfostmt" accept=".pdf">
+    <input type="file" name="detailsofforeignassets" accept=".pdf">
+    <input type="file" name="form26as" accept=".pdf">
+    <!-- Add more file inputs as needed -->
+
+    <button type="submit">Upload Files</button>
+  </form>
+</body>
+</html>
