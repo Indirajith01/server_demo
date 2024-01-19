@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+  <ul id="document-list"></ul>
+  <script>
+    // admin.js
+    document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('http://localhost:3000/admin/documents');
+  
+      if (!response.ok) {
+        throw new Error(`Failed to fetch documents. Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+  
+      const documentList = document.getElementById('document-list');
+
+      console.log(data);
+  
+      data.forEach(val => {
+        const listItem1 = document.createElement('li');
+        const listItem2= document.createElement('li');
+        listItem1.textContent = `User ID: ${val.userId}, Timestamp: ${val.timestamp}`;
+        val.urls.forEach(element => {
+          const listItem3= document.createElement('a');
+          listItem3.href = element;
+          listItem3.innerHTML = element + '<br/><br/>'
+          listItem2.appendChild(listItem3)
+        })
+        documentList.appendChild(listItem1);
+        documentList.appendChild(listItem2);
+        documentList.appendChild(document.createElement('br'));
+        documentList.appendChild(document.createElement('hr'));
+        documentList.appendChild(document.createElement('br'));
+        
+      });
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+      // Handle the error, e.g., display an error message on the page
+    }
+  });
+  
+  
+
+  </script>
+</body>
+</html>
